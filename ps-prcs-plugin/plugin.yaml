@@ -1,0 +1,38 @@
+name: ps-prcs plugin
+version: 1.0
+rundeckPluginVersion: 1.0
+author: JR Bing
+date: 2016-01-13
+providers:
+  - name: ps-prcs
+    service: RemoteScriptNodeStep
+    title: PS Process Scheduler
+    description: Executes commands to administer a PeopleSoft process scheduler
+    plugin-type: script
+    script-interpreter: /bin/bash
+    script-file: psadmin.sh
+    script-args: '${config.prcs_domain} ${config.action}'
+    config:
+      - type: String
+        name: prcs_domain
+        title: Process Scheduler Domain
+        description: Process Scheduler Server Domain
+        default:
+        required: true
+      - type: Select
+        name: action
+        title: Type
+        description: Action
+        default: status
+        required: true
+        values:
+          - status
+          - start
+          - stop
+          - kill
+          - configure
+          - flush
+          - restart
+          - bounce
+          - compile
+          - link
