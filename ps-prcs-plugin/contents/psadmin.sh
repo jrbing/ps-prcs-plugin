@@ -10,7 +10,10 @@
 #
 #===============================================================================
 
-# TODO:  add function to delete cache files
+# TODO: add function to delete cache files
+# TODO: add additional logging
+# TODO: rename script from psadmin.sh to psprcs.sh
+# TODO: wrap psadmin commands in functions
 
 # Export the PMID in order to resolve an issue that Tuxedo has with long hostnames
 PMID=$(hostname)
@@ -60,6 +63,7 @@ function check_variables () {
 }
 
 function update_path () {
+  echoinfo "Updating PATH"
   export PATH=$PATH:.
   export PATH=$TUXDIR/bin:$PATH
   [[ $COBDIR ]] && export PATH=$COBDIR/bin:$PATH
@@ -68,6 +72,7 @@ function update_path () {
 }
 
 function update_ld_library_path () {
+  echoinfo "Updating LD_LIBRARY_PATH"
   export LD_LIBRARY_PATH=$TUXDIR/lib:$LD_LIBRARY_PATH
   [[ $JAVA_HOME ]] && export LD_LIBRARY_PATH=$JAVA_HOME/lib:$LD_LIBRARY_PATH
   [[ $COBDIR ]] && export LD_LIBRARY_PATH=$COBDIR/lib:$LD_LIBRARY_PATH
