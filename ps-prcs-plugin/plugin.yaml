@@ -2,7 +2,7 @@ name: ps-prcs plugin
 version: 1.0
 rundeckPluginVersion: 1.0
 author: JR Bing
-date: 2016-01-13
+date: 2016-01-28
 providers:
   - name: ps-prcs
     service: RemoteScriptNodeStep
